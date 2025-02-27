@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.kursach.frontent.scnene.UserView">
+  <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+          <Tab onSelectionChanged="#selectionRequest" text="Запросы">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="tableViewRequest" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn fx:id="columnThemeRequest" prefWidth="419.0" text="Тема" />
+                            <TableColumn fx:id="columnDateRequest" prefWidth="119.0" text="Дата запроса" />
+                              <TableColumn fx:id="columnStateRequest" minWidth="9.0" prefWidth="88.0" text="Статус" />
+                              <TableColumn fx:id="columnBodyRequest" prefWidth="376.0" text="Тело" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TableView>
+                        <GridPane alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="465.0" minWidth="10.0" prefWidth="241.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="763.0" minWidth="10.0" prefWidth="763.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="-Infinity" minHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="-Infinity" minHeight="70.0" prefHeight="35.0" valignment="TOP" vgrow="ALWAYS" />
+                            <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Тема запроса">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="requestSubjectRequest" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#updateRequest" text="Обновить таблицу" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Тело запроса" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextArea fx:id="bodySubjectRequest" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextArea>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="textErrorRequest" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                       </children>
+                                    </HBox>
+                                    <Button mnemonicParsing="false" onAction="#sendRequest" style="-fx-background-color: green;" text="Отправить">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#canceledRequest" style="-fx-background-color: red;" text="Отмена" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+          <Tab onSelectionChanged="#selectionTax" text="Налоговые начисления">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="tableViewTax" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="columnNameTax" prefWidth="351.0" text="Налог" />
+                              <TableColumn fx:id="columnSumTax" prefWidth="120.0" text="Сумма" />
+                              <TableColumn fx:id="columnDataTax" minWidth="9.0" prefWidth="148.0" text="Срок уплаты" />
+                              <TableColumn fx:id="columnStatusTax" prefWidth="75.0" text="Статус" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TableView>
+                        <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="1014.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#updateTax" text="Обновить">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                              <Text fx:id="textErrorTax" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+  </children>
+</VBox>

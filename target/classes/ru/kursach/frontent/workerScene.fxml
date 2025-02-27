@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.kursach.frontent.scnene.WorkerView">
+  <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <tabs>
+          <Tab onSelectionChanged="#updateTableUsers" text="Пользователи">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TableView fx:id="tableViewUsers" onMouseClicked="#selectUser" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="columnFIOUsers" prefWidth="528.0" text="ФИО" />
+                                    <TableColumn fx:id="columnEmailUsers" prefWidth="241.0" text="Почта" />
+                                    <TableColumn fx:id="columnPhoneUsers" prefWidth="234.0" text="Телефон" />
+                                 </columns>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TableView>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <GridPane cacheHint="QUALITY" depthTest="ENABLE" prefHeight="157.0" prefWidth="1014.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Почта" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Телефон" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextField fx:id="fioUsers" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="emailUsers" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="phoneUsers" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="BASELINE" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="errorTextUser" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                             </children>
+                                          </HBox>
+                                          <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#updateUsers" style="-fx-background-color: green;" text="Измененить" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#canceledUsers" style="-fx-background-color: red;" text="Отмена" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#updateTableUsers" text="Обновить" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="15.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="35.0" minHeight="30.0" prefHeight="35.0" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="37.0" minHeight="25.0" prefHeight="37.0" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="47.0" minHeight="18.0" prefHeight="41.0" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="55.0" minHeight="38.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+          </Tab>
+            <Tab onSelectionChanged="#updateTableRequest" text="Запросы">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="tableViewRequest" onMouseClicked="#selectRequest" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="columnThemeRequest" prefWidth="419.0" text="Тема" />
+                              <TableColumn fx:id="columnDateRequest" prefWidth="119.0" text="Дата запроса" />
+                              <TableColumn fx:id="columnStateRequest" minWidth="9.0" prefWidth="88.0" text="Статус" />
+                              <TableColumn fx:id="columnBodyRequest" prefWidth="376.0" text="Тело" />
+                           </columns>
+                        </TableView>
+                        <HBox prefHeight="22.0" prefWidth="1024.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="paginationDownRequest" mnemonicParsing="false" onAction="#offsetDownRequest" prefHeight="30.0" prefWidth="50.0" text="&lt;&lt;&lt;" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="paginationUpRequest" mnemonicParsing="false" onAction="#offsetUpRequest" prefHeight="30.0" prefWidth="50.0" text="&gt;&gt;&gt;" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <GridPane alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <Label text="Тема запроса" />
+                              <TextField fx:id="requestSubjectRequest" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" onAction="#updateTableRequest" text="Обновить таблицу" GridPane.rowIndex="3" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Тело запроса" GridPane.rowIndex="1" />
+                              <TextArea fx:id="bodySubjectRequest" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextArea>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Статус" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="statusRequest" prefHeight="31.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </ComboBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="errorTextRequest" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                       </children>
+                                    </HBox>
+                                    <Button mnemonicParsing="false" onAction="#sendRequest" style="-fx-background-color: green;" text="Отправить">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#canceledRequest" style="-fx-background-color: red;" text="Отмена" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="465.0" minWidth="10.0" prefWidth="241.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="763.0" minWidth="10.0" prefWidth="763.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="42.0" minHeight="35.0" prefHeight="42.0" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="109.0" minHeight="70.0" prefHeight="92.0" valignment="TOP" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="65.0" minHeight="31.0" prefHeight="41.0" valignment="CENTER" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="35.0" prefHeight="35.0" valignment="CENTER" vgrow="ALWAYS" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+          <Tab onSelectionChanged="#updateTableTax" text="Налоги">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TableView fx:id="tableViewTax" onMouseClicked="#selectTax" prefHeight="298.0" prefWidth="1014.0" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="columnFIOTax" prefWidth="254.0" text="ФИО" />
+                              <TableColumn fx:id="columnNameOrganizationsTax" prefWidth="258.0" text="Название организации" />
+                              <TableColumn fx:id="columnTypeTax" minWidth="0.0" prefWidth="193.0" text="Тип налога" />
+                              <TableColumn fx:id="columnSumTax" prefWidth="84.0" text="Сумма" />
+                              <TableColumn fx:id="columnDateTax" prefWidth="127.0" text="Срок уплаты" />
+                              <TableColumn fx:id="columnStatusTax" prefWidth="97.0" text="Статус" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </TableView>
+                        <HBox prefHeight="22.0" prefWidth="1024.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="paginationDownTax" mnemonicParsing="false" onAction="#offsetDownTax" prefHeight="30.0" prefWidth="50.0" text="&lt;&lt;&lt;" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="paginationUpTax" mnemonicParsing="false" onAction="#offsetUpTax" prefHeight="30.0" prefWidth="50.0" text="&gt;&gt;&gt;" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="5.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <GridPane cacheHint="QUALITY" depthTest="ENABLE" prefHeight="265.0" prefWidth="1014.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Сумма" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Срок уплаты" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Тип налога" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextField fx:id="sumTax" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="BASELINE" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="errorTextTax" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                             </children>
+                                          </HBox>
+                                          <Button mnemonicParsing="false" onAction="#addRecordTax" style="-fx-background-color: green;" text="Создать налоговую запись" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#updateRecordTax" style="-fx-background-color: green;" text="Изменить" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#deleteRecordTax" style="-fx-background-color: red;" text="Удалить" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#canceledTax" style="-fx-background-color: red;" text="Отмена" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Название организации" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <children>
+                                    <ComboBox fx:id="typeTax" prefWidth="300.0" />
+                                 </children>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#updateTableTax" text="Обновить" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Статус" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <HBox alignment="CENTER_RIGHT" layoutX="186.0" layoutY="70.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <children>
+                                    <ComboBox fx:id="statusTax" prefWidth="301.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox fx:id="fioTax" prefWidth="300.0" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox fx:id="nameOrganizationTax" prefWidth="300.0" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <children>
+                                    <DatePicker fx:id="dateTax" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" maxWidth="176.0" minWidth="10.0" prefWidth="171.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="909.0" minWidth="15.0" prefWidth="843.0" />
+                           </columnConstraints>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <rowConstraints>
+                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="ALWAYS" />
+                              <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+          </Tab>
+            <Tab onSelectionChanged="#updateTableOrganization" text="Организации">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TableView fx:id="tableViewOrganization" onMouseClicked="#selectOrganization" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn fx:id="columnNameOrganization" prefWidth="429.0" text="Название организации" />
+                                    <TableColumn fx:id="columnInnOrganization" prefWidth="188.0" text="ИНН" />
+                                    <TableColumn fx:id="columnKppOrganization" prefWidth="205.0" text="КПП" />
+                                    <TableColumn fx:id="columnAddressOrganization" prefWidth="200.0" text="Адресс" />
+                                 </columns>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TableView>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <GridPane cacheHint="QUALITY" depthTest="ENABLE" prefHeight="191.0" prefWidth="1024.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Название организации">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="КПП" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Адресс" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextField fx:id="nameOrganization" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="kppOrganization" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField fx:id="addressOrganization" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BASELINE" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Text fx:id="errorTextOrganizations" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                             </children>
+                                          </HBox>
+                                          <Button mnemonicParsing="false" onAction="#addOrganization" style="-fx-background-color: green;" text="Добавить организацию" textFill="WHITE" />
+                                          <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#updateOrganization" style="-fx-background-color: green;" text="Изменить" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#deleteOrganization" style="-fx-background-color: red;" text="Удалить организацию" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#canceledOrganization" style="-fx-background-color: red;" text="Отмена" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <Button mnemonicParsing="false" onAction="#updateTableOrganization" text="Обновить" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ИНН" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <TextField fx:id="innOrganization" layoutX="115.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" maxWidth="181.0" minWidth="10.0" prefWidth="181.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="908.0" minWidth="15.0" prefWidth="833.0" />
+                           </columnConstraints>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="35.0" minHeight="30.0" prefHeight="35.0" valignment="CENTER" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="35.0" minHeight="30.0" prefHeight="35.0" valignment="CENTER" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="37.0" minHeight="25.0" prefHeight="37.0" valignment="CENTER" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="47.0" minHeight="18.0" prefHeight="41.0" valignment="CENTER" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="55.0" minHeight="38.0" prefHeight="44.0" valignment="CENTER" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+  </children>
+</VBox>
